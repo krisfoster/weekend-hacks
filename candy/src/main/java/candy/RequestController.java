@@ -1,7 +1,5 @@
 package candy;
 
-import candy.RequestController.Message;
-import io.micronaut.core.annotation.Introspected;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
 
@@ -11,14 +9,6 @@ public class RequestController {
     private static String status = "green";
     private static Integer speed = 0;
     private static Boolean gimme = Boolean.FALSE;
-
-    @Introspected
-    public record Message(
-        Integer speed,
-        String status,
-        Boolean gimme
-    ){
-    }
 
     @Get(uri="/candy", produces=MediaType.APPLICATION_JSON)
     public Message candy() {
@@ -34,13 +24,13 @@ public class RequestController {
 
     @Post(uri="/auto", consumes=MediaType.APPLICATION_JSON, produces=MediaType.TEXT_HTML)
     public void auto(Message message) {
-        speed = message.speed;
+        speed = message.speed();
         System.out.println(speed);
     }
 
     @Post(uri="/whattodo", consumes=MediaType.APPLICATION_JSON, produces=MediaType.APPLICATION_JSON)
     public Message whattodo(Message message) {
-        status = message.status;
+        status = message.status();
         Message response = new Message(null, null, gimme);
         gimme = Boolean.TRUE;
         return response;
