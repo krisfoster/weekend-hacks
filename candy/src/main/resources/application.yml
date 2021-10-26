@@ -1,0 +1,9 @@
+micronaut:
+  application:
+    name: candy
+  router:
+    static-resources:
+      default:
+        paths: classpath:public
+        mapping: /
+        enabled: true
