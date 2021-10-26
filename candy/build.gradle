@@ -26,7 +26,7 @@ dependencies {
     implementation("javax.annotation:javax.annotation-api")
     runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut:micronaut-validation")
-
+    compileOnly("org.graalvm.nativeimage:svm")
 }
 
 
@@ -38,5 +38,8 @@ java {
     targetCompatibility = JavaVersion.toVersion("17")
 }
 
+nativeImage {
+    args("-H:Name=candy", "-H:IncludeResources='./public/index.html'")
+}
 
 
