@@ -38,7 +38,7 @@ div {text-align: center;}
 
 <script>
 var request = new XMLHttpRequest()
-request.open('GET', 'http://<ServerIP>/request/query', true)
+request.open('GET', '/query', true)
 request.onload = function () {
   var data = JSON.parse(this.response)
   document.getElementById("value1").innerHTML = data.speed;
@@ -51,7 +51,7 @@ function doClick() {
   console.log("click button");
 
   var request = new XMLHttpRequest()
-  request.open('GET', 'http://<ServerIP>/request/candy', true)
+  request.open('GET', '/candy', true)
   request.onload = function () {
   var data = JSON.parse(this.response)
     document.getElementById("status").innerHTML.color = data.status;
@@ -64,7 +64,7 @@ function doSlider(v){
   console.log("change slider");
 
   var request = new XMLHttpRequest();
-  request.open('POST', 'http://<ServerIP>/auto', true);
+  request.open('POST', '/auto', true);
   request.setRequestHeader('Content-type', 'application/json');
   request.onload = function () {
       console.log(this.responseText);
