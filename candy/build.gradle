@@ -38,8 +38,7 @@ java {
     targetCompatibility = JavaVersion.toVersion("17")
 }
 
-nativeImage {
-    args("-H:IncludeResources='./public/index.html'", "--report-unsupported-elements-at-runtime")
+dockerBuild {
+    images = ["uk-london-1.ocir.io/cloudnative-devrel/graal-demo/candy:1"]  
 }
-
 
